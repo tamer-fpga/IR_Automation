@@ -1,10 +1,19 @@
-An incident response process involves isolating a compromised host from the network by updating firewall rules. The script will use Python to automate this task:
-How to Automate Incident Response for Host Isolation
-Requirements:
-Python 3: Ensure Python 3.x is installed on your system.
-Paramiko: A Python library for SSHv2 connections. Install it using :
-**pip install paramiko**.
-Setup:
-Python Script: Save the above Python script as isolate_host.py in the directory /home/kali/IR/.
-SSH Credentials: You need SSH access credentials (hostname, port, username, password) for the network device or server where the firewall rule will be applied.
-Infected Host IP: Identify the IP address of the host to be isolated.
+**Automating Incident Response with Python and Azure Sentinel**
+**Overview**
+This Python script automates the Incident Response process by identifying infected hosts using IP addresses obtained from Azure Sentinel and then isolating these hosts by updating firewall rules.
+
+**Prerequisites:**
+Azure Setup: Ensure you have access to an Azure account with Azure Sentinel set up.
+Permissions: Verify you have the necessary permissions to query Azure Sentinel and to execute commands on the network device or server.
+Python Environment: Python 3.x should be installed, along with azure-identity, azure-monitor-query, and paramiko libraries.
+Paramiko for SSH: Used to automate firewall rule updates on the network device or server.
+Azure CLI: Recommended for local development and testing for authentication purposes.
+**Installation:**
+pip install azure-identity azure-monitor-query paramiko
+**Configuration:**
+Azure Sentinel Workspace ID: Replace <Your-Workspace-ID> with your actual Log Analytics workspace ID associated with Azure Sentinel.
+KQL Query: Customize the kql_query variable to accurately extract the infected host IPs based on your Sentinel alert schema.
+SSH Connection Details: Set hostname, port, username, and password with the credentials of the network device or server where firewall rules will be updated.
+**Execution:**
+Run the script from your terminal:
+python IR_FW_Sentinel.py
